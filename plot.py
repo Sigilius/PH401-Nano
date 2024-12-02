@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.graph_objs as plt
+import plotly.graph_objects as go 
 
 class NanoparticleAnalyzer:
     @staticmethod
@@ -61,7 +61,7 @@ def main():
         'Electrical': (10, 20),
         'Magnetic': (1, 10),
         'Strength': (1, 50),
-        'Research': (1, 100)
+        'Testing': (1, 100)
     }
 
     # Application selection
@@ -141,9 +141,9 @@ def main():
     st.header("Visualization")
 
     # Surface vs Bulk Percentage
-    fig_percent = plt.figure()
+    fig_percent = go.figure()
     fig_percent.add_trace(
-        plt.Scatter(
+        go.Scatter(
             x=sizes, 
             y=atoms_surface, 
             mode='lines+markers', 
@@ -151,7 +151,7 @@ def main():
         )
     )
     fig_percent.add_trace(
-        plt.Scatter(
+        go.Scatter(
             x=sizes, 
             y=atoms_bulk, 
             mode='lines+markers', 
@@ -167,9 +167,9 @@ def main():
 
     # Surface to Bulk Ratio
     surface_to_bulk_ratio = [s/b for s, b in zip(atoms_surface, atoms_bulk)]
-    fig_ratio = plt.figure()
+    fig_ratio = go.figure()
     fig_ratio.add_trace(
-        plt.Scatter(
+        go.Scatter(
             x=sizes, 
             y=surface_to_bulk_ratio, 
             mode='lines+markers', 
