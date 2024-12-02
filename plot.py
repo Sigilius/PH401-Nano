@@ -61,7 +61,7 @@ def main():
         'Electrical': (10, 20),
         'Magnetic': (1, 10),
         'Strength': (1, 50),
-        'Research': (1, 100)
+        'Any Value': (1, 100)
     }
 
     # Application selection
@@ -141,7 +141,7 @@ def main():
     st.header("Visualization")
 
     # Surface vs Bulk Percentage
-    fig_percent = go.Figure()  # Corrected Figure creation
+    fig_percent = go.Figure()  
     fig_percent.add_trace(
         go.Scatter(
             x=sizes, 
@@ -167,7 +167,7 @@ def main():
 
     # Surface to Bulk Ratio
     surface_to_bulk_ratio = [s/b for s, b in zip(atoms_surface, atoms_bulk)]
-    fig_ratio = go.Figure()  # Corrected Figure creation
+    fig_ratio = go.Figure() 
     fig_ratio.add_trace(
         go.Scatter(
             x=sizes, 
@@ -182,18 +182,3 @@ def main():
         yaxis_title='Surface/Bulk Ratio'
     )
     st.plotly_chart(fig_ratio, use_container_width=True)
-
-    # Application Recommendations
-    st.header("Recommendations")
-    st.markdown(f"""
-    ### Nanoparticle Characteristics for {application} Application
-    - **Recommended Size Range**: {values[0]} - {values[1]} nm
-    - **Shape**: {shape}
-    - **Key Observations**:
-        - Particle size significantly impacts surface-to-bulk atom ratio
-        - Smaller particles have higher surface atom percentage
-        - Surface properties become more dominant at smaller scales
-    """)
-
-if __name__ == "__main__":
-    main()
