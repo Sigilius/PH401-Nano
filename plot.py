@@ -172,7 +172,7 @@ def main():
     st.plotly_chart(fig_percent, use_container_width=True)
 
     # Surface to Bulk Ratio
-    surface_to_bulk_ratio = [s/b for s, b in zip(atoms_surface, atoms_bulk)]
+    surface_to_bulk_ratio = [s/b for s, b in zip(atoms_surface, atoms_bulk) if b!=0]
     fig_ratio = go.Figure() 
     fig_ratio.add_trace(
         go.Scatter(
