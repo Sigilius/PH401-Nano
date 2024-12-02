@@ -120,8 +120,8 @@ def main():
             (bulk_atoms/total_atoms)*100
         ])
         
-        atoms_surface.append(max(0,(surface_atoms/total_atoms)*100))
-        atoms_bulk.append(max(0,(bulk_atoms/total_atoms)*100))
+        atoms_surface.append(min(100,max(0,(surface_atoms/total_atoms)*100)))
+        atoms_bulk.append(max(0 ,(bulk_atoms/total_atoms)*100))
 
     # Create DataFrame for display
     atoms_df = pd.DataFrame(
