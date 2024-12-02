@@ -182,3 +182,8 @@ def main():
         yaxis_title='Surface/Bulk Ratio'
     )
     st.plotly_chart(fig_ratio, use_container_width=True)
+
+
+
+if __name__ == "__main__":
+    main()
