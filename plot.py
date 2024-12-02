@@ -59,8 +59,8 @@ def main():
     application_ranges = {
         'Optical': (40, 100),
         'Electrical': (10, 20),
-        'Magnetic': (1, 10),
         'Strength': (1, 50),
+         'Magnetic': (1, 10),
         'Any Value': (1, 100)
     }
 
