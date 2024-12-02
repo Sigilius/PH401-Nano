@@ -42,7 +42,7 @@ class NanoparticleAnalyzer:
     @staticmethod
     def sc_surface(layer):
         """Calculate surface atoms in Simple Cubic (SC) nanoparticle."""
-        return int(6 * (layer**2))
+        return int(6 * (layer**2) - 12 * (layer - 2) + 8)
 
 def main():
     st.set_page_config(page_title="Nanoparticle Analyzer", layout="wide")
@@ -109,7 +109,7 @@ def main():
     for size in sizes:
         total_atoms = total_func(size)
         surface_atoms = surface_func(size)
-        bulk_atoms = total_atoms - surface_atoms
+        bulk_atoms = max(0, total_atoms - surface_atoms)
         
         atom_data.append([
             size, 
@@ -120,8 +120,8 @@ def main():
             (bulk_atoms/total_atoms)*100
         ])
         
-        atoms_surface.append((surface_atoms/total_atoms)*100)
-        atoms_bulk.append((bulk_atoms/total_atoms)*100)
+        atoms_surface.append(max(0,(surface_atoms/total_atoms)*100))
+        atoms_bulk.append(max(0,(bulk_atoms/total_atoms)*100))
 
     # Create DataFrame for display
     atoms_df = pd.DataFrame(
