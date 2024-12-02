@@ -57,27 +57,33 @@ def main():
 
     # Application-based size ranges
     application_ranges = {
-        'Optical': (40, 100),
-        'Electrical': (10, 20),
-        'Strength': (1, 50),
-         'Magnetic': (1, 10),
-        'Any Value': (1, 100)
+        'Optical': {'range': (40, 100), 'default': (40, 50)},
+        'Electrical': {'range': (10, 20), 'default': (10, 20)},
+        'Strength': {'range': (1, 50), 'default': (1, 50)},
+        'Magnetic': {'range': (1, 10), 'default': (1, 10)},
+        'Any Value': {'range': (1, 100), 'default': (1, 100)}
     }
 
-    # Application selection
+    # Application selection 
     application = st.sidebar.selectbox(
         "Select Application:", 
         list(application_ranges.keys()), 
-        index=4
+        index=4,
+        key='application_select' 
     )
+    
+    # Get the current application's range
+    current_range = application_ranges[application]['range']
+    current_default = application_ranges[application]['default']
 
     # Dynamic size slider based on application
-    min_range, max_range = application_ranges[application]
     values = st.sidebar.slider(
         'Specify Size Limits for Nanoparticle (nm)', 
-        min_range, max_range, (min_range, 50)
+        current_range[0],  # Minimum possible value
+        current_range[1],  # Maximum possible value
+        current_default,   # Default selected range
+        key=f'size_slider_{application}'  
     )
-
     # Computation and analysis
     sizes = list(range(values[0], values[1] + 1))
 
