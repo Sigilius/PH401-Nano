@@ -29,8 +29,8 @@ Write a computer program to deduce the total number of atoms, surface atoms, vol
 
 
 
-![1669528246786](image/README/1669528246786.png)
+![image1](images/image1.png)
 
-![1669528280469](image/README/1669528280469.png)
+![image2](images/image2.png)
 
-![1669528301188](image/README/1669528301188.png)
+![image3](images/image3.png)
