@@ -61,7 +61,7 @@ def main():
         'Electrical': (10, 20),
         'Magnetic': (1, 10),
         'Strength': (1, 50),
-        'Testing': (1, 100)
+        'Research': (1, 100)
     }
 
     # Application selection
@@ -141,7 +141,7 @@ def main():
     st.header("Visualization")
 
     # Surface vs Bulk Percentage
-    fig_percent = go.figure()
+    fig_percent = go.Figure()  # Corrected Figure creation
     fig_percent.add_trace(
         go.Scatter(
             x=sizes, 
@@ -167,7 +167,7 @@ def main():
 
     # Surface to Bulk Ratio
     surface_to_bulk_ratio = [s/b for s, b in zip(atoms_surface, atoms_bulk)]
-    fig_ratio = go.figure()
+    fig_ratio = go.Figure()  # Corrected Figure creation
     fig_ratio.add_trace(
         go.Scatter(
             x=sizes, 
